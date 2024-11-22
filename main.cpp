@@ -8,8 +8,8 @@
 
 void showMenu() {
     std::cout << "Menu:\n";
-    std::cout << "1. Rotate 90 degrees counterclockwise\n";
-    std::cout << "2. Rotate 90 degrees clockwise\n";
+    std::cout << "1. Rotate 90 degrees clockwise\n";
+    std::cout << "2. Rotate 90 degrees counterclockwise\n";
     std::cout << "3. Apply Gaussian filter\n";
     std::cout << "4. Save image\n";
     std::cout << "5. Exit\n";
