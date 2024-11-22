@@ -10,13 +10,11 @@ std::vector<RGB> rotate90CounterClockwise(const std::vector<RGB>& data, int widt
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            rotated[(width - x - 1) * height + y] = data[y * width + x];
+            rotated[x * height + (height - y - 1)] = data[y * width + x];
         }
     }
 
     return rotated;
 }
 
-
 #endif // ROTATE_COUNTERCLOCKWISE_HPP
-
