@@ -15,10 +15,6 @@ bool readBMP(std::ifstream& file, BMPFileHeader& fileHeader, BMPInfoHeader& info
 
     // Read the BMP info header
     file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
-    if (infoHeader.biBitCount != 24) {
-        std::cerr << "Only 24-bit BMP files are supported!" << std::endl;
-        return false;
-    }
 
     // Verify bfOffBits
     if (fileHeader.bfOffBits < sizeof(fileHeader) + infoHeader.biSize) {
@@ -57,4 +53,3 @@ bool readBMP(std::ifstream& file, BMPFileHeader& fileHeader, BMPInfoHeader& info
 
     return true;  // Successful read
 }
-
