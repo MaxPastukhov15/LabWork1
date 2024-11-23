@@ -10,8 +10,6 @@ bool readBMP(std::ifstream& file, BMPFileHeader& fileHeader, BMPInfoHeader& info
         return false;
     }
 
-    // Print bfSize for debugging
-    std::cout << "bfSize (File Size in Header): " << fileHeader.bfSize << " bytes\n";
 
     // Read the BMP info header
     file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
