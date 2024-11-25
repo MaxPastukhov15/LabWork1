@@ -1,3 +1,4 @@
+// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
 #ifndef BMP_UTILS_HPP
 #define BMP_UTILS_HPP
 

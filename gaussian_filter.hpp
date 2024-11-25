@@ -1,3 +1,4 @@
+// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
 #ifndef GAUSSIAN_FILTER_HPP
 #define GAUSSIAN_FILTER_HPP
 

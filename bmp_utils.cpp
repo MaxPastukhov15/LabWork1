@@ -1,3 +1,4 @@
+// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
 #include "bmp_utils.hpp"
 #include <iostream>
 #include <fstream>

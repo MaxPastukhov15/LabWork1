@@ -1,3 +1,4 @@
+// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
 #ifndef ROTATE_CLOCKWISE_HPP
 #define ROTATE_CLOCKWISE_HPP
 
