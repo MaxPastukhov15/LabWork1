@@ -2,19 +2,30 @@
 #ifndef ROTATE_CLOCKWISE_HPP
 #define ROTATE_CLOCKWISE_HPP
 
-#include <vector>
 #include "bmp_utils.hpp"
 
+void rotateClockwise(BMPImage& image) {
+    
+    int width = image.getWidth();
+    int height = image.getHeight();
+    const auto& pixels = image.getPixels();
 
-std::vector<RGB> rotate90Clockwise(const std::vector<RGB>& data, int width, int height) {
-    std::vector<RGB> rotated(height * width);
+    std::vector<RGB> rotatedPixels(height * width);  
 
-for (int y = 0; y < height; ++y) {
+    for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            rotated[(width - x - 1) * height + y] = data[y * width + x];
+            rotatedPixels[(width - x - 1) * height + y] = pixels[y * width + x];
         }
     }
 
-    return rotated;
+    image.setPixels(rotatedPixels);
+    image.setDimensions(height, width);  
+
+    // updating the header
+    BMPInfoHeader& infoHeader = image.getInfoHeader();
+    infoHeader.biWidth = height;
+    infoHeader.biHeight = width;  
 }
+
+
 #endif // ROTATE_CLOCKWISE_HPP

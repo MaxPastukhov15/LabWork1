@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -g -Wall -Werror -Wpedantic 
 TARGET = im_ed
-SOURCES = main.cpp   bmp_utils.cpp
+SOURCES = main.cpp   bmp_utils.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 $(TARGET): $(OBJECTS)

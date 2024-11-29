@@ -2,20 +2,25 @@
 #ifndef ROTATE_COUNTERCLOCKWISE_HPP
 #define ROTATE_COUNTERCLOCKWISE_HPP
 
-#include <vector>
 #include "bmp_utils.hpp"
 
+void rotateCounterClockwise(BMPImage& image) {
+    int width = image.getWidth();
+    int height = image.getHeight();
+    const auto& pixels = image.getPixels();
 
-std::vector<RGB> rotate90CounterClockwise(const std::vector<RGB>& data, int width, int height) {
-    std::vector<RGB> rotated(height * width);
+    std::vector<RGB> rotatedPixels(height * width);  
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            rotated[x * height + (height - y - 1)] = data[y * width + x];
+            rotatedPixels[x * height + (height - y - 1)] = pixels[y * width + x];
         }
     }
 
-    return rotated;
+    image.setPixels(rotatedPixels);
+    image.setDimensions(height, width); 
 }
 
 #endif // ROTATE_COUNTERCLOCKWISE_HPP
+
+

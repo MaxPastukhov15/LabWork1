@@ -1,54 +1,64 @@
 // Maksim Pastukhov B82 mail: st131119@student.spbu.ru
-#include "bmp_utils.hpp"
-#include <iostream>
-#include <fstream>
 
-bool readBMP(std::ifstream& file, BMPFileHeader& fileHeader, BMPInfoHeader& infoHeader, std::vector<RGB>& pixels) {
-    // Read the BMP file header
+#include "bmp_utils.hpp"
+#include <fstream>
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+bool BMPImage::read(const std::string& filename) {
+    std::ifstream file(filename, std::ios::binary);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file!" << std::endl;
+        return false;
+    }
+
     file.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
-    if (fileHeader.bfType != 0x4D42) {  // 'BM'
+    if (fileHeader.bfType != 0x4D42) {
         std::cerr << "Not a BMP file!" << std::endl;
         return false;
     }
 
-
-    // Read the BMP info header
     file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
+    width = infoHeader.biWidth;
+    height = abs(infoHeader.biHeight);
 
-    // Verify bfOffBits
     if (fileHeader.bfOffBits < sizeof(fileHeader) + infoHeader.biSize) {
         std::cerr << "Invalid bfOffBits value!" << std::endl;
         return false;
     }
 
-    // Seek to pixel data
     file.seekg(fileHeader.bfOffBits, std::ios::beg);
-    if (file.fail()) {
-        std::cerr << "Failed to seek to pixel data!" << std::endl;
-        return false;
-    }
-
-    // Calculate padding
-    int width = infoHeader.biWidth;
-    int height = abs(infoHeader.biHeight);
     int rowPadding = (4 - (width * 3) % 4) % 4;
 
-    // Resize pixel vector
     pixels.resize(width * height);
-
-    // Read pixel data
     for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            RGB pixel;
-            file.read(reinterpret_cast<char*>(&pixel), sizeof(RGB));
-            if (file.eof()) {
-                std::cerr << "Unexpected end of file while reading pixels!" << std::endl;
-                return false;
-            }
-            pixels[y * width + x] = pixel;
-        }
-        file.ignore(rowPadding);  // Skip padding
+        file.read(reinterpret_cast<char*>(&pixels[y * width]), width * sizeof(RGB));
+        file.ignore(rowPadding);
     }
 
-    return true;  // Successful read
+    return true;
 }
+
+void BMPImage::save(const std::string& filename) {
+    std::ofstream outFile(filename, std::ios::binary);
+    if (!outFile) {
+        std::cerr << "Error creating output file!" << std::endl;
+        return;
+    }
+
+    int rowPadding = (4 - (width * 3) % 4) % 4;
+    infoHeader.biSizeImage = (width * 3 + rowPadding) * abs(height);
+    fileHeader.bfSize = sizeof(BMPFileHeader) + sizeof(BMPInfoHeader) + infoHeader.biSizeImage;
+
+    outFile.write(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
+    outFile.write(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
+
+    for (int y = 0; y < abs(height); ++y) {
+        outFile.write(reinterpret_cast<char*>(&pixels[y * width]), width * sizeof(RGB));
+        outFile.write("\0\0\0", rowPadding);
+    }
+
+    outFile.close();
+}
+
