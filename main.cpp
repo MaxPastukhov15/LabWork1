@@ -3,8 +3,7 @@
 #include <fstream>
 #include <vector>
 #include "bmp_utils.hpp"
-#include "rotate_clockwise.hpp"
-#include "rotate_counterclockwise.hpp"
+#include "rotate_image.hpp"
 #include "gaussian_filter.hpp"
 
 void showMenu() {
@@ -38,13 +37,13 @@ int main() {
         switch (choice) {
             case 1: {
                 // Rotate 90 degrees clockwise
-                rotateClockwise(image);
+                rotateImage(image, RotationDirection::Clockwise);
                 std::cout << "Image rotated 90 degrees clockwise.\n";
                 break;
             }
             case 2: {
                 // Rotate 90 degrees counterclockwise
-                rotateCounterClockwise(image);
+                rotateImage(image, RotationDirection::CounterClockwise);
                 std::cout << "Image rotated 90 degrees counterclockwise.\n";
                 break;
             }
@@ -91,6 +90,4 @@ int main() {
 
     return 0;
 }
-
-
 

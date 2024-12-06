@@ -7,13 +7,11 @@
 #include <vector>
 #include <algorithm>
 
-
 void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
     int width = image.getWidth();
     int height = image.getHeight();
-    auto pixels = image.getPixels();
 
-    // generation for Gauss kernel
+    // Gaussian kernel generation
     std::vector<std::vector<float>> kernel(kernelSize, std::vector<float>(kernelSize));
     int halfSize = kernelSize / 2;
     float sum = 0.0;
@@ -25,49 +23,52 @@ void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
         }
     }
 
-    // Normalization of kernel
+    // Kernel normalization
     for (int i = 0; i < kernelSize; ++i) {
         for (int j = 0; j < kernelSize; ++j) {
             kernel[i][j] /= sum;
         }
     }
 
-    // using the filter
+    // Filter applying
     std::vector<RGB> filteredPixels(width * height);
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            float r = 0, g = 0, b = 0;
+            float red = 0.0f;
+            float green = 0.0f;
+            float blue = 0.0f;
 
+            // Apply the Gaussian kernel
             for (int ky = -halfSize; ky <= halfSize; ++ky) {
                 for (int kx = -halfSize; kx <= halfSize; ++kx) {
-                    int nx = x + kx;
-                    int ny = y + ky;
+                    int nx = std::clamp(x + kx, 0, width - 1);
+                    int ny = std::clamp(y + ky, 0, height - 1);
 
-                    // checking for bounds
-                    if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-                        const RGB& pixel = pixels[ny * width + nx];
-                        float weight = kernel[ky + halfSize][kx + halfSize];
+                    float weight = kernel[ky + halfSize][kx + halfSize];
+                    const RGB& neighbor = image.getPixel(nx, ny);
 
-                        r += pixel.r * weight;
-                        g += pixel.g * weight;
-                        b += pixel.b * weight;
-                    }
+                    red += neighbor.r * weight;
+                    green += neighbor.g * weight;
+                    blue += neighbor.b * weight;
                 }
             }
 
-            filteredPixels[y * width + x] = {static_cast<uint8_t>(r), static_cast<uint8_t>(g), static_cast<uint8_t>(b)};
+            // Clamp and store the filtered values
+            RGB& outputPixel = filteredPixels[y * width + x];
+            outputPixel.r = static_cast<uint8_t>(std::clamp(red, 0.0f, 255.0f));
+            outputPixel.g = static_cast<uint8_t>(std::clamp(green, 0.0f, 255.0f));
+            outputPixel.b = static_cast<uint8_t>(std::clamp(blue, 0.0f, 255.0f));
         }
     }
 
-    // update of  pixels in image
-    image.setPixels(filteredPixels);
+    // Image pixel update
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            image.setPixel(x, y, filteredPixels[y * width + x]);
+        }
+    }
 }
 
-
-
 #endif // GAUSSIAN_FILTER_HPP
-
-
-
 

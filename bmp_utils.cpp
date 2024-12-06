@@ -1,10 +1,16 @@
 // Maksim Pastukhov B82 mail: st131119@student.spbu.ru
-
 #include "bmp_utils.hpp"
 #include <fstream>
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+
+void BMPImage::updateHeaders() {
+    infoHeader.biWidth = width;
+    infoHeader.biHeight = height;
+    infoHeader.biSizeImage = width * height * sizeof(RGB);
+    fileHeader.bfSize = fileHeader.bfOffBits + infoHeader.biSizeImage;
+}
 
 bool BMPImage::read(const std::string& filename) {
     std::ifstream file(filename, std::ios::binary);
@@ -56,9 +62,43 @@ void BMPImage::save(const std::string& filename) {
 
     for (int y = 0; y < abs(height); ++y) {
         outFile.write(reinterpret_cast<char*>(&pixels[y * width]), width * sizeof(RGB));
-        outFile.write("\0\0\0", rowPadding);
+        outFile.write("\0", rowPadding);
     }
 
     outFile.close();
+}
+
+RGB BMPImage::getPixel(int x, int y) const {
+    if (x >= 0 && x < width && y >= 0 && y < height) {
+        return pixels[y * width + x];
+    }
+    throw std::out_of_range("Pixel coordinates out of range");
+}
+
+void BMPImage::setPixel(int x, int y, const RGB& color) {
+    if (x >= 0 && x < width && y >= 0 && y < height) {
+        pixels[y * width + x] = color;
+    } else {
+        throw std::out_of_range("Pixel coordinates out of range");
+    }
+}
+
+void BMPImage::setPixels(const std::vector<RGB>& newPixels) {
+    if (newPixels.size() == pixels.size()) {
+        pixels = newPixels;
+    } else {
+        throw std::invalid_argument("New pixel data size does not match current size");
+    }
+}
+
+void BMPImage::setDimensions(int w, int h) {
+    if (w > 0 && h > 0) {
+        width = w;
+        height = h;
+        pixels.resize(width * height);
+        updateHeaders();
+    } else {
+        throw std::invalid_argument("Width and height must be positive");
+    }
 }
 

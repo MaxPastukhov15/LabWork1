@@ -1,5 +1,4 @@
 // Maksim Pastukhov B82 mail: st131119@student.spbu.ru
-
 #ifndef BMP_UTILS_HPP
 #define BMP_UTILS_HPP
 
@@ -39,44 +38,34 @@ struct RGB {
 class BMPImage {
 private:
     BMPFileHeader fileHeader;  // headerfile
-    BMPInfoHeader infoHeader;  // infoheader 
+    BMPInfoHeader infoHeader;  // infoheader
     std::vector<RGB> pixels;  // pixels of picture
     int width;  // width pictures
     int height; // height pictures
+
+    void updateHeaders();
 
 public:
     // reading picture from file
     bool read(const std::string& filename);
 
-    // saving image in  file
+    // saving image in file
     void save(const std::string& filename);
 
     // methods access to width and height
     int getWidth() const { return width; }
     int getHeight() const { return height; }
 
-    void setWidth(int newWidth) { width = newWidth; }
-    void setHeight(int newHeight) { height = newHeight; }
-
-    // methods for working  with pixels
-    std::vector<RGB>& getPixels() { return pixels; }
-    const std::vector<RGB>& getPixels() const { return pixels; }
-    void setPixels(const std::vector<RGB>& newPixels) { pixels = newPixels; }
-    void setDimensions(int w, int h) { 
-        width = w; 
-        height = h; 
-        infoHeader.biWidth = w; 
-        infoHeader.biHeight = h; 
-    }
+    // methods for working with pixels
+    RGB getPixel(int x, int y) const;
+    void setPixel(int x, int y, const RGB& color);
+    void setPixels(const std::vector<RGB>& newPixels);
+    void setDimensions(int w, int h);
 
     // methods for access to header
-    BMPFileHeader& getFileHeader() { return fileHeader; }
     const BMPFileHeader& getFileHeader() const { return fileHeader; }
-    BMPInfoHeader& getInfoHeader() { return infoHeader; }
     const BMPInfoHeader& getInfoHeader() const { return infoHeader; }
 };
 
-
-
-#endif
+#endif // BMP_UTILS_HPP
 
