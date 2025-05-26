@@ -38,21 +38,17 @@ int main() {
         switch (choice) {
             case 1: {
                 // Rotate 90 degrees clockwise
-                auto st = std::chrono::high_resolution_clock::now();
+               
                 rotateImage(image, RotationDirection::Clockwise);
-                auto en = std::chrono::high_resolution_clock::now();
-                auto d = std::chrono::duration_cast<std::chrono::microseconds>(en - st);
-                std::cout << d.count() << '\n';
+               
                 std::cout << "Image rotated 90 degrees clockwise.\n";
                 break;
             }
             case 2: {
                 // Rotate 90 degrees counterclockwise
-                auto st = std::chrono::high_resolution_clock::now();
+               
                 rotateImage(image, RotationDirection::CounterClockwise);
-                auto en = std::chrono::high_resolution_clock::now();
-                auto d = std::chrono::duration_cast<std::chrono::microseconds>(en - st);
-                std::cout << d.count() << '\n';
+                
                 std::cout << "Image rotated 90 degrees counterclockwise.\n";
                 break;
             }
@@ -71,11 +67,9 @@ int main() {
 
                 std::cout << "Enter sigma (standard deviation): ";
                 std::cin >> sigma;
-		auto st = std::chrono::high_resolution_clock::now();
+		
                 applyGaussianFilter(image, kernelSize, sigma);
-                auto en = std::chrono::high_resolution_clock::now();
-                auto d = std::chrono::duration_cast<std::chrono::microseconds>(en - st);
-                std::cout << d.count() << '\n';
+               
                 std::cout << "Gaussian filter applied.\n";
                 break;
             }
