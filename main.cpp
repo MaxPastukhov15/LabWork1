@@ -68,7 +68,7 @@ int main() {
                 std::cin >> sigma;
 		
                 applyGaussianFilter(image, kernelSize, sigma);
-                auto en = std::chrono::high_resolution_clock::now();
+               
               
                 std::cout << "Gaussian filter applied.\n";
                 break;
