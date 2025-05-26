@@ -5,6 +5,7 @@
 #include "bmp_utils.hpp"
 #include "rotate_image.hpp"
 #include "gaussian_filter.hpp"
+#include <chrono>
 
 void showMenu() {
     std::cout << "Menu:\n";
@@ -38,12 +39,15 @@ int main() {
             case 1: {
                 // Rotate 90 degrees clockwise
                 rotateImage(image, RotationDirection::Clockwise);
+             
                 std::cout << "Image rotated 90 degrees clockwise.\n";
                 break;
             }
             case 2: {
                 // Rotate 90 degrees counterclockwise
+               
                 rotateImage(image, RotationDirection::CounterClockwise);
+               
                 std::cout << "Image rotated 90 degrees counterclockwise.\n";
                 break;
             }
@@ -62,8 +66,10 @@ int main() {
 
                 std::cout << "Enter sigma (standard deviation): ";
                 std::cin >> sigma;
-
+		
                 applyGaussianFilter(image, kernelSize, sigma);
+                auto en = std::chrono::high_resolution_clock::now();
+              
                 std::cout << "Gaussian filter applied.\n";
                 break;
             }
