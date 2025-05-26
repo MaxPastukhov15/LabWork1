@@ -6,6 +6,7 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <thread>
 
 void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
     int width = image.getWidth();
@@ -32,36 +33,47 @@ void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
 
     // Filter applying
     std::vector<RGB> filteredPixels(width * height);
+    const unsigned int num_threads = std::thread::hardware_concurrency();
+    std::vector<std::thread> threads;
+     
+    auto process_segment = [&](int start_y, int end_y){
+    	for (int y = start_y; y < end_y; ++y) {
+        	for (int x = 0; x < width; ++x) {
+        	    float red = 0.0f, green = 0.0f, blue = 0.0f;
 
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            float red = 0.0f;
-            float green = 0.0f;
-            float blue = 0.0f;
+        	    // Apply the Gaussian kernel
+        	    for (int ky = -halfSize; ky <= halfSize; ++ky) {
+        	        for (int kx = -halfSize; kx <= halfSize; ++kx) {
+        	            int nx = std::clamp(x + kx, 0, width - 1);
+        	            int ny = std::clamp(y + ky, 0, height - 1);
+	
+        	            float weight = kernel[ky + halfSize][kx + halfSize];
+        	            const RGB& neighbor = image.getPixel(nx, ny);
 
-            // Apply the Gaussian kernel
-            for (int ky = -halfSize; ky <= halfSize; ++ky) {
-                for (int kx = -halfSize; kx <= halfSize; ++kx) {
-                    int nx = std::clamp(x + kx, 0, width - 1);
-                    int ny = std::clamp(y + ky, 0, height - 1);
+        	            red += neighbor.r * weight;
+        	            green += neighbor.g * weight;
+        	            blue += neighbor.b * weight;
+        	        }
+        	    }
 
-                    float weight = kernel[ky + halfSize][kx + halfSize];
-                    const RGB& neighbor = image.getPixel(nx, ny);
-
-                    red += neighbor.r * weight;
-                    green += neighbor.g * weight;
-                    blue += neighbor.b * weight;
-                }
-            }
-
-            // Clamp and store the filtered values
-            RGB& outputPixel = filteredPixels[y * width + x];
-            outputPixel.r = static_cast<uint8_t>(std::clamp(red, 0.0f, 255.0f));
-            outputPixel.g = static_cast<uint8_t>(std::clamp(green, 0.0f, 255.0f));
-            outputPixel.b = static_cast<uint8_t>(std::clamp(blue, 0.0f, 255.0f));
-        }
+        	    // Clamp and store the filtered values
+        	    RGB& outputPixel = filteredPixels[y * width + x];
+        	    outputPixel.r = static_cast<uint8_t>(std::clamp(red, 0.0f, 255.0f));
+        	    outputPixel.g = static_cast<uint8_t>(std::clamp(green, 0.0f, 255.0f));
+        	    outputPixel.b = static_cast<uint8_t>(std::clamp(blue, 0.0f, 255.0f));
+        	}
+    	}
+    };
+    
+    int rows_per_thread = height / num_threads;
+    for (unsigned int i = 0; i < num_threads; ++i){
+    	int start_y = i * rows_per_thread;
+    	int end_y = (i == num_threads - 1) ? height : (i + 1) * rows_per_thread;
+    	threads.emplace_back(process_segment, start_y , end_y);
     }
-
+    
+    for (auto& thread : threads) thread.join();
+	
     // Image pixel update
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
