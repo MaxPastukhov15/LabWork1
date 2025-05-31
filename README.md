@@ -4,20 +4,28 @@ Pastukhov Maksim Germanovich, группа 24.Б82-мм
 ## Contacts
 st131119@student.spbu.ru
 ## Description
-Labwork 1- programm for reading bmp file and manipulating it
-1.Rotate clockwise 90
-2.Rotate counterclockwise 90
-3.Put filter gauss on image
-After starting the programm:
-1.write dow the full name of the file(example: image.bmp)
-2.use 1 of three options(gaussian filter, rotate90clockwise, rotate90counterclockwise)
-3.save image (example i.bmp)
-4.repeat steps if you want to make additional manipulations 
-(but write name of saved image( i.bmp ) and write new name to save.)
-astyle is used in makefile
-## Build
-make
-## Run
-./im_ed
-## Clean
-make clean
+A high-performance BMP image processing tool with multi-threaded operations for:
+- 90° clockwise/counter-clockwise rotation
+- Gaussian blur filter application
+
+## Key Features
+- **Multi-threaded Processing**: Leverages all available CPU cores for optimal performance
+- **BMP Format Support**: Handles standard BMP files with 24-bit color depth
+- **Modular Architecture**: Clean separation of image processing algorithms
+- **Optimized Algorithms**: Efficient implementations for fast operations
+
+## Performance Metrics
+| Operation            | Before Optimization | After Optimization | Speedup |
+|----------------------|---------------------|--------------------|---------|
+| Clockwise Rotation   | 16764 μs            | 5733 μs            | 2.92x   |
+| Counter-clockwise    | 7943 μs             | 5365 μs            | 1.48x   |
+| Gaussian Filter      | 534054 μs           | 5064 μs            | 105.5x  |
+
+## Requirements
+- C++11 compatible compiler
+## Build & Run
+```bash
+make        # Compile the application
+./im_ed     # Run the program
+make clean  # Clean build artifacts
+

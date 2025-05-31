@@ -38,8 +38,9 @@ int main() {
         switch (choice) {
             case 1: {
                 // Rotate 90 degrees clockwise
+               
                 rotateImage(image, RotationDirection::Clockwise);
-             
+
                 std::cout << "Image rotated 90 degrees clockwise.\n";
                 break;
             }
@@ -47,7 +48,7 @@ int main() {
                 // Rotate 90 degrees counterclockwise
                
                 rotateImage(image, RotationDirection::CounterClockwise);
-               
+
                 std::cout << "Image rotated 90 degrees counterclockwise.\n";
                 break;
             }
@@ -68,8 +69,7 @@ int main() {
                 std::cin >> sigma;
 		
                 applyGaussianFilter(image, kernelSize, sigma);
-               
-              
+
                 std::cout << "Gaussian filter applied.\n";
                 break;
             }
