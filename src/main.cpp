@@ -1,10 +1,25 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file main.cpp
+ * @author Maksim Pastukhov : st131119@student.spbu.ru
+ * @brief Main program file for BMP image processing
+ * 
+ * Provides a command-line interface for:
+ * - Loading BMP images
+ * - Rotating images 90° clockwise/counter-clockwise
+ * - Applying Gaussian blur filter
+ * - Saving modified images
+ * 
+ * Usage:
+ * 1. Specify input BMP filename
+ * 2. Select operation from menu
+ * 3. Choose save option to store results
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include "bmp_utils.hpp"
-#include "rotate_image.hpp"
-#include "gaussian_filter.hpp"
+#include "im_manipulator.hpp"
 #include <chrono>
 
 void showMenu() {
@@ -39,15 +54,12 @@ int main() {
             case 1: {
                 // Rotate 90 degrees clockwise
                 rotateImage(image, RotationDirection::Clockwise);
-             
                 std::cout << "Image rotated 90 degrees clockwise.\n";
                 break;
             }
             case 2: {
                 // Rotate 90 degrees counterclockwise
-               
                 rotateImage(image, RotationDirection::CounterClockwise);
-               
                 std::cout << "Image rotated 90 degrees counterclockwise.\n";
                 break;
             }
@@ -66,10 +78,9 @@ int main() {
 
                 std::cout << "Enter sigma (standard deviation): ";
                 std::cin >> sigma;
-		
+
                 applyGaussianFilter(image, kernelSize, sigma);
-               
-              
+		
                 std::cout << "Gaussian filter applied.\n";
                 break;
             }

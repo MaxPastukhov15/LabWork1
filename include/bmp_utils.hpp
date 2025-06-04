@@ -1,9 +1,25 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file bmp_utils.hpp
+ * @author Maksim Pastukhov (st131119@student.spbu.ru)
+ * @brief BMP structures and class definitions
+ * 
+ * Contains:
+ * - BMPFileHeader and BMPInfoHeader structures
+ * - RGB pixel structure
+ * - BMPImage class with image manipulation methods
+ * 
+ * Features:
+ * - 24-bit uncompressed BMP support
+ * - pragma pack for proper BMP format alignment
+ * - Safe pixel access methods
+ */
+
 #ifndef BMP_UTILS_HPP
 #define BMP_UTILS_HPP
 
 #include <vector>
 #include <string>
+#include <cstdint>
 
 #pragma pack(push, 1)
 struct BMPFileHeader {
