@@ -21,3 +21,6 @@ jobs:
       - name: Build 
         run: 
           make  # Сборка
+      - name: Tests
+        run:
+          make test
