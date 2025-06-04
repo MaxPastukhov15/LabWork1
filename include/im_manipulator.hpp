@@ -1,4 +1,16 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file im_manipulator.hpp
+ * @author Maksim Pastukhov (st131119@student.spbu.ru)
+ * @brief Image manipulation functions declarations
+ * 
+ * Contains declarations for:
+ * - Image rotation (rotateImage)
+ * - Gaussian filter (applyGaussianFilter)
+ * 
+ * Defines RotationDirection enum for specifying
+ * image rotation direction.
+ */
+
 #ifndef IM_MANIPULATOR_HPP
 #define IM_MANIPULATOR_HPP
 

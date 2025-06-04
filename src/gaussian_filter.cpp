@@ -1,4 +1,20 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file gaussian_filter.cpp
+ * @author Maksim Pastukhov : st131119@student.spbu.ru
+ * @brief Gaussian blur filter implementation
+ * 
+ * Implements applyGaussianFilter() function for applying
+ * Gaussian blur to BMP images using multithreading.
+ * 
+ * Algorithm:
+ * 1. Generate filter kernel based on size and sigma
+ * 2. Normalize kernel values
+ * 3. Split image into row segments for parallel processing
+ * 4. Each thread applies filter to its segment
+ * 5. Main thread combines results
+ * 
+ * @note Kernel size must be odd number
+ */
 
 #include "bmp_utils.hpp"
 #include <cmath>

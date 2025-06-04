@@ -1,4 +1,20 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file main.cpp
+ * @author Maksim Pastukhov : st131119@student.spbu.ru
+ * @brief Main program file for BMP image processing
+ * 
+ * Provides a command-line interface for:
+ * - Loading BMP images
+ * - Rotating images 90° clockwise/counter-clockwise
+ * - Applying Gaussian blur filter
+ * - Saving modified images
+ * 
+ * Usage:
+ * 1. Specify input BMP filename
+ * 2. Select operation from menu
+ * 3. Choose save option to store results
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>

@@ -1,4 +1,18 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file rotate_image.cpp
+ * @author Maksim Pastukhov : st131119@student.spbu.ru
+ * @brief Image rotation functions implementation
+ * 
+ * Implements rotateImage() function for 90° rotation of BMP images
+ * in both directions using multithreading.
+ * 
+ * Algorithm:
+ * 1. Create temporary buffer for rotated pixels
+ * 2. Split image into row segments for parallel processing
+ * 3. Each thread processes its segment
+ * 4. Main thread combines results
+ * 5. Updates image dimensions
+ */
 
 #include "bmp_utils.hpp"
 #include <vector>

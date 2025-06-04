@@ -1,4 +1,19 @@
-// Maksim Pastukhov B82 mail: st131119@student.spbu.ru
+/**
+ * @file bmp_utils.cpp
+ * @author Maksim Pastukhov : st131119@student.spbu.ru
+ * @brief BMPImage class methods implementation
+ * 
+ * Implements methods for:
+ * - Reading BMP files (supports 24-bit uncompressed format)
+ * - Saving BMP files
+ * - Managing pixels and image headers
+ * 
+ * Implementation details:
+ * - Automatic row padding handling
+ * - File format validation
+ * - Header updates when image dimensions change
+ */
+
 #include "bmp_utils.hpp"
 #include <fstream>
 #include <iostream>
