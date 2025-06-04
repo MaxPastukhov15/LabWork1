@@ -1,0 +1,23 @@
+name: Parallel programm
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  
+
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y g++ make cmake  
+
+    
+      - name: Build 
+        run: 
+          make  # Сборка
