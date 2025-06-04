@@ -1,3 +1,4 @@
+//Maksim Pastukhov (st131119@student.spbu.ru)
 #include "gtest/gtest.h"
 #include "bmp_utils.hpp"
 #include "im_manipulator.hpp"
