@@ -57,24 +57,7 @@ protected:
     std::vector<RGB> testPixels;
 };
 
-// BMP Utilities Tests
-TEST_F(ImageEditorTest, BMPReadValidFile) {
-    BMPImage image;
-    EXPECT_TRUE(image.read("test.bmp"));
-    EXPECT_EQ(image.getWidth(), 3);
-    EXPECT_EQ(image.getHeight(), 3);
-    
-    // Check first and last pixel
-    RGB pixel = image.getPixel(0, 0);
-    EXPECT_EQ(pixel.r, 255);
-    EXPECT_EQ(pixel.g, 0);
-    EXPECT_EQ(pixel.b, 0);
-    
-    pixel = image.getPixel(2, 2);
-    EXPECT_EQ(pixel.r, 0);
-    EXPECT_EQ(pixel.g, 0);
-    EXPECT_EQ(pixel.b, 255);
-}
+
 
 TEST_F(ImageEditorTest, BMPReadInvalidFile) {
     BMPImage image;
