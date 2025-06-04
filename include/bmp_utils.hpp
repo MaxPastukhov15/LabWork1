@@ -1,17 +1,7 @@
 /**
  * @file bmp_utils.hpp
  * @author Maksim Pastukhov (st131119@student.spbu.ru)
- * @brief BMP structures and class definitions
- * 
- * Contains:
- * - BMPFileHeader and BMPInfoHeader structures
- * - RGB pixel structure
- * - BMPImage class with image manipulation methods
- * 
- * Features:
- * - 24-bit uncompressed BMP support
- * - pragma pack for proper BMP format alignment
- * - Safe pixel access methods
+ * @brief BMP structures and class definitions.
  */
 
 #ifndef BMP_UTILS_HPP
@@ -22,6 +12,10 @@
 #include <cstdint>
 
 #pragma pack(push, 1)
+/**
+ * @struct BMPFileHeader
+ * @brief BMP file header structure.
+ */
 struct BMPFileHeader {
     uint16_t bfType;
     uint32_t bfSize;
@@ -29,7 +23,10 @@ struct BMPFileHeader {
     uint16_t bfReserved2;
     uint32_t bfOffBits;
 };
-
+/**
+ * @struct BMPInfoHeader
+ * @brief BMP info header structure.
+ */
 struct BMPInfoHeader {
     uint32_t biSize;
     int32_t biWidth;
@@ -44,41 +41,82 @@ struct BMPInfoHeader {
     uint32_t biClrImportant;
 };
 #pragma pack(pop)
-
+/**
+ * @struct RGB
+ * @brief RGB pixel structure.
+ */
 struct RGB {
     uint8_t r;
     uint8_t g;
     uint8_t b;
 };
-
+/**
+ * @class BMPImage
+ * @brief Class for handling BMP image data and operations.
+ */
 class BMPImage {
 private:
-    BMPFileHeader fileHeader;  // headerfile
-    BMPInfoHeader infoHeader;  // infoheader
-    std::vector<RGB> pixels;  // pixels of picture
-    int width;  // width pictures
-    int height; // height pictures
+    BMPFileHeader fileHeader;  
+    BMPInfoHeader infoHeader;  
+    std::vector<RGB> pixels;  
+    int width;  
+    int height; 
 
     void updateHeaders();
 
 public:
-    // reading picture from file
+/**
+ * @brief Reads a BMP image from a file.
+ * 
+ * @param filename The name of the BMP file to read.
+ * @return true if the file was read successfully, false otherwise.
+ */
     bool read(const std::string& filename);
 
-    // saving image in file
+/**
+ * @brief Saves the BMP image to a file.
+ * 
+ * @param filename The name of the output BMP file.
+ */
     void save(const std::string& filename);
 
-    // methods access to width and height
-    int getWidth() const { return width; }
-    int getHeight() const { return height; }
-
-    // methods for working with pixels
+/**
+ * @brief Gets the RGB pixel at the specified coordinates.
+ * 
+ * @param x The x-coordinate of the pixel.
+ * @param y The y-coordinate of the pixel.
+ * @return RGB The pixel value.
+ * @throws std::out_of_range if coordinates are out of bounds.
+ */
     RGB getPixel(int x, int y) const;
+   /**
+ * @brief Sets the RGB pixel at the specified coordinates.
+ * 
+ * @param x The x-coordinate of the pixel.
+ * @param y The y-coordinate of the pixel.
+ * @param color The new RGB pixel value.
+ * @throws std::out_of_range if coordinates are out of bounds.
+ */
     void setPixel(int x, int y, const RGB& color);
-    void setPixels(const std::vector<RGB>& newPixels);
-    void setDimensions(int w, int h);
 
-    // methods for access to header
+/**
+ * @brief Sets all pixels in the image.
+ * 
+ * @param newPixels The new pixel data.
+ * @throws std::invalid_argument if the new pixel data size doesn't match the current size.
+ */
+    void setPixels(const std::vector<RGB>& newPixels);
+  /**
+ * @brief Sets the dimensions of the image and resizes the pixel buffer.
+ * 
+ * @param w The new width.
+ * @param h The new height.
+ * @throws std::invalid_argument if width or height are not positive.
+ */
+    void setDimensions(int w, int h);
+/**
+*  @brief Methods for access to header
+*/
     const BMPFileHeader& getFileHeader() const { return fileHeader; }
     const BMPInfoHeader& getInfoHeader() const { return infoHeader; }
 };

@@ -1,19 +1,22 @@
 /**
  * @file gaussian_filter.cpp
- * @author Maksim Pastukhov : st131119@student.spbu.ru
- * @brief Gaussian blur filter implementation
+ * @author Maksim Pastukhov (st131119@student.spbu.ru)
+ * @brief Implementation of Gaussian blur filter.
+ */
+
+/**
+ * @brief Applies a Gaussian blur filter to a BMP image.
  * 
- * Implements applyGaussianFilter() function for applying
- * Gaussian blur to BMP images using multithreading.
+ * @param image The BMPImage to filter.
+ * @param kernelSize The size of the kernel (must be odd).
+ * @param sigma The standard deviation for the Gaussian function.
  * 
- * Algorithm:
- * 1. Generate filter kernel based on size and sigma
- * 2. Normalize kernel values
- * 3. Split image into row segments for parallel processing
- * 4. Each thread applies filter to its segment
- * 5. Main thread combines results
- * 
- * @note Kernel size must be odd number
+ * The function:
+ * 1. Generates a Gaussian kernel based on the specified size and sigma.
+ * 2. Normalizes the kernel values.
+ * 3. Splits the image into segments for parallel processing.
+ * 4. Uses multiple threads to apply the filter to each segment.
+ * 5. Combines results and updates the image.
  */
 
 #include "bmp_utils.hpp"

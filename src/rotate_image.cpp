@@ -1,17 +1,25 @@
 /**
  * @file rotate_image.cpp
- * @author Maksim Pastukhov : st131119@student.spbu.ru
- * @brief Image rotation functions implementation
+ * @author Maksim Pastukhov (st131119@student.spbu.ru)
+ * @brief Implementation of image rotation functions.
+ */
+
+/**
+ * @enum RotationDirection
+ * @brief Specifies the direction of image rotation.
+ */
+
+/**
+ * @brief Rotates a BMP image by 90 degrees in the specified direction.
  * 
- * Implements rotateImage() function for 90° rotation of BMP images
- * in both directions using multithreading.
+ * @param image The BMPImage to rotate.
+ * @param direction The rotation direction (Clockwise or CounterClockwise).
  * 
- * Algorithm:
- * 1. Create temporary buffer for rotated pixels
- * 2. Split image into row segments for parallel processing
- * 3. Each thread processes its segment
- * 4. Main thread combines results
- * 5. Updates image dimensions
+ * The function:
+ * 1. Creates a temporary buffer for rotated pixels.
+ * 2. Splits the image into segments for parallel processing.
+ * 3. Uses multiple threads to rotate each segment.
+ * 4. Combines results and updates image dimensions.
  */
 
 #include "bmp_utils.hpp"

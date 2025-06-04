@@ -1,20 +1,15 @@
 /**
  * @file main.cpp
- * @author Maksim Pastukhov : st131119@student.spbu.ru
- * @brief Main program file for BMP image processing
+ * @author Maksim Pastukhov (st131119@student.spbu.ru)
+ * @brief Main program for BMP image processing.
  * 
- * Provides a command-line interface for:
- * - Loading BMP images
- * - Rotating images 90° clockwise/counter-clockwise
- * - Applying Gaussian blur filter
- * - Saving modified images
- * 
- * Usage:
- * 1. Specify input BMP filename
- * 2. Select operation from menu
- * 3. Choose save option to store results
+ * Provides a command-line interface for loading, manipulating, and saving BMP images.
+ * Supported operations include rotation and Gaussian blur filtering.
  */
 
+/**
+ * @brief Displays the main menu options.
+ */
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,6 +25,18 @@ void showMenu() {
     std::cout << "4. Save image\n";
     std::cout << "5. Exit\n";
 }
+
+/**
+ * @brief Main function for the BMP image processing application.
+ * 
+ * @return int Exit status (0 for success, 1 for error).
+ * 
+ * The function:
+ * 1. Prompts the user for an input BMP filename.
+ * 2. Reads the image file.
+ * 3. Displays a menu for image manipulation options.
+ * 4. Processes user choices until exit is selected.
+ */
 
 int main() {
     BMPImage image;
