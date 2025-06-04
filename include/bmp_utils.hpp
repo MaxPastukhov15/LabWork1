@@ -119,6 +119,11 @@ public:
 */
     const BMPFileHeader& getFileHeader() const { return fileHeader; }
     const BMPInfoHeader& getInfoHeader() const { return infoHeader; }
+/**
+*  @brief Methods for access to size
+*/
+   int getWidth() const {return width;}
+   int getHeight() const {return height;}
 };
 
 #endif // BMP_UTILS_HPP
