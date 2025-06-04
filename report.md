@@ -24,21 +24,21 @@ This document presents performance improvements achieved through optimization of
 ## Performance Results
 
 ### Rotation Operations
-| Operation            | Single-thread | Multi-thread (4 threads) | Improvement |
-|----------------------|---------------|--------------------------|-------------|
-| Clockwise Rotation   | 16,764 μs     | 5,733 μs                 | 2.92x       |
-| Counter-clockwise    | 7,943 μs      | 5,365 μs                 | 1.48x       |
+| Operation            | Single-thread | hardware concurrency (4 threads) | Improvement | 8 threads | 5 threads|
+|----------------------|---------------|----------------------------------|-------------|-----------|----------|
+| Clockwise Rotation   | 16,764 μs     | 5,733 μs                         | 2.92x       |  5452 μs  | 5910 μs  |
+| Counter-clockwise    | 7,943 μs      | 5,365 μs                         | 1.48x       |  6222 μs  | 5900 μs  |
 
 
 **Analysis:** The rotation operations benefited significantly from:
 - Multi-threaded pixel processing
 - Optimized memory access patterns
 
-### Gaussian Filter
-| Metric               | Single-thread  | Multi-thread(4 threads)  | Improvement  |
-|----------------------|----------------|--------------------------|--------------|
-| Execution Time (μs)  | 534054         | 5064                     | 105.5x faster|
-| Throughput (MPixel/s)| ~0.19          | ~20.1                    | 105.5x       |
+### Gaussian Filter(11 kernel size, sigma 80)
+| Metric               | Single-thread  | hardware concurrency(4 threads)  | Improvement  | 8 threads | 5 threads|
+|----------------------|----------------|----------------------------------|--------------|-----------|----------|
+| Execution Time (μs)  | 534054         | 5064                             | 105.5x faster| 479956    | 481110   |
+| Throughput (MPixel/s)| ~0.19          | ~20.1                            | 105.5x       |           |          |
 
 **Key Optimizations:**
 1. **Parallel Processing:** Divided image into vertical segments processed by separate threads
@@ -50,3 +50,4 @@ The optimization efforts resulted in dramatic performance improvements:
 - Rotation operations now 1.5-3x faster
 - Gaussian filter shows 100x+ speedup
 - System scales well with core count
+- the best choice to use number of threads that are avalaible for you

@@ -47,7 +47,7 @@ void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
 
     // Filter applying
     std::vector<RGB> filteredPixels(width * height);
-    const unsigned int num_threads = std::thread::hardware_concurrency();
+    const unsigned int num_threads = 1;//std::thread::hardware_concurrency();
     std::vector<std::thread> threads;
      
     auto process_segment = [&](int start_y, int end_y){
