@@ -1,6 +1,4 @@
 // Maksim Pastukhov B82 mail: st131119@student.spbu.ru
-#ifndef GAUSSIAN_FILTER_HPP
-#define GAUSSIAN_FILTER_HPP
 
 #include "bmp_utils.hpp"
 #include <cmath>
@@ -81,6 +79,4 @@ void applyGaussianFilter(BMPImage& image, int kernelSize, float sigma) {
         }
     }
 }
-
-#endif // GAUSSIAN_FILTER_HPP
 

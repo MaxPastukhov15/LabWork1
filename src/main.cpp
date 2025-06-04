@@ -3,8 +3,7 @@
 #include <fstream>
 #include <vector>
 #include "bmp_utils.hpp"
-#include "rotate_image.hpp"
-#include "gaussian_filter.hpp"
+#include "im_manipulator.hpp"
 #include <chrono>
 
 void showMenu() {

@@ -1,6 +1,4 @@
 // Maksim Pastukhov B82 mail: st131119@student.spbu.ru
-#ifndef ROTATE_IMAGE_HPP
-#define ROTATE_IMAGE_HPP
 
 #include "bmp_utils.hpp"
 #include <vector>
@@ -45,6 +43,3 @@ void rotateImage(BMPImage& image, RotationDirection direction) {
 
     image.setDimensions(height, width);
 }
-
-#endif // ROTATE_IMAGE_HPP
-
