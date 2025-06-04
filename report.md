@@ -7,27 +7,38 @@
 This document presents performance improvements achieved through optimization of core image processing operations. The key optimizations include multi-threading implementation and algorithm refinement.
 
 ## Test Environment
-- CPU: Modern multi-core processor (without exact specs)
-- OS: Linux
-- Compiler: GCC/Clang with C++11 support
+### Hardware Specifications
+- **Device**: Lenovo IdeaPad 3
+- **CPU**: Intel Core i3-1115G4 (2 cores/4 threads) @ 3.0GHz-4.1GHz
+- **RAM**: 8GB DDR4
+- **Storage**: 256GB SSD
+- **OS**: Linux (Ubuntu 22.04 LTS)
+- **Compiler**: GCC 11.3.0 with C++11 support
 
+### Test Image
+- **Filename**: Airplane.bmp
+- **Dimensions**: 1024×1024 pixels (square)
+- **Size**: 768 KB (3,145,728 bytes)
+- **Format**: 24-bit uncompressed BMP
+  
 ## Performance Results
 
 ### Rotation Operations
-| Operation            | Execution Time (μs) | Improvement |
-|----------------------|---------------------|-------------|
-| Clockwise Rotation   | 5733 (from 16764)   | 2.92x faster|
-| Counter-clockwise    | 5365 (from 7943)    | 1.48x faster|
+| Operation            | Single-thread | Multi-thread (4 threads) | Improvement |
+|----------------------|---------------|--------------------------|-------------|
+| Clockwise Rotation   | 16,764 μs     | 5,733 μs                 | 2.92x       |
+| Counter-clockwise    | 7,943 μs      | 5,365 μs                 | 1.48x       |
+
 
 **Analysis:** The rotation operations benefited significantly from:
 - Multi-threaded pixel processing
 - Optimized memory access patterns
 
 ### Gaussian Filter
-| Metric               | Before  | After   | Improvement |
-|----------------------|---------|---------|-------------|
-| Execution Time (μs)   | 534054  | 5064    | 105.5x faster|
-| Throughput (MPixel/s) | ~0.19   | ~20.1   | 105.5x      |
+| Metric               | Single-thread  | Multi-thread(4 threads)  | Improvement  |
+|----------------------|----------------|--------------------------|--------------|
+| Execution Time (μs)  | 534054         | 5064                     | 105.5x faster|
+| Throughput (MPixel/s)| ~0.19          | ~20.1                    | 105.5x       |
 
 **Key Optimizations:**
 1. **Parallel Processing:** Divided image into vertical segments processed by separate threads
