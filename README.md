@@ -28,4 +28,10 @@ A high-performance BMP image processing tool with multi-threaded operations for:
 make        # Compile the application
 ./im_ed     # Run the program
 make clean  # Clean build artifacts
+```
+## To watch doxygen documentation(Linux)
+```bash
+
+xdg-open docs/html/index.html 
+``` 
 
