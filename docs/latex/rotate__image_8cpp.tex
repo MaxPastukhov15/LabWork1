@@ -1,0 +1,106 @@
+\hypertarget{rotate__image_8cpp}{}\doxysection{src/rotate\+\_\+image.cpp File Reference}
+\label{rotate__image_8cpp}\index{src/rotate\_image.cpp@{src/rotate\_image.cpp}}
+
+
+Implementation of image rotation functions.  
+
+
+{\ttfamily \#include \char`\"{}bmp\+\_\+utils.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+Include dependency graph for rotate\+\_\+image.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{rotate__image_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797}{Rotation\+Direction}} \{ \mbox{\hyperlink{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}{Clockwise}}
+, \mbox{\hyperlink{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}{Counter\+Clockwise}}
+, \mbox{\hyperlink{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}{Clockwise}}
+, \mbox{\hyperlink{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}{Counter\+Clockwise}}
+ \}
+\begin{DoxyCompactList}\small\item\em Rotates a BMP image by 90 degrees in the specified direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{rotate__image_8cpp_a0df5e5ad13f07afe93b6b5ed06f80995}{rotate\+Image}} (\mbox{\hyperlink{classBMPImage}{BMPImage}} \&image, \mbox{\hyperlink{im__manipulator_8hpp_a6b66060484cf0b607efc54e3f5309797}{Rotation\+Direction}} direction)
+\begin{DoxyCompactList}\small\item\em Rotates a BMP image by 90 degrees in the specified direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of image rotation functions. 
+
+\begin{DoxyAuthor}{Author}
+Maksim Pastukhov (\href{mailto:st131119@student.spbu.ru}{\texttt{ st131119@student.\+spbu.\+ru}}) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797}\label{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797}} 
+\index{rotate\_image.cpp@{rotate\_image.cpp}!RotationDirection@{RotationDirection}}
+\index{RotationDirection@{RotationDirection}!rotate\_image.cpp@{rotate\_image.cpp}}
+\doxysubsubsection{\texorpdfstring{RotationDirection}{RotationDirection}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{im__manipulator_8hpp_a6b66060484cf0b607efc54e3f5309797}{Rotation\+Direction}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Rotates a BMP image by 90 degrees in the specified direction. 
+
+Specifies the direction of image rotation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & The \mbox{\hyperlink{classBMPImage}{BMPImage}} to rotate. \\
+\hline
+{\em direction} & The rotation direction (Clockwise or Counter\+Clockwise).\\
+\hline
+\end{DoxyParams}
+The function\+:
+\begin{DoxyEnumerate}
+\item Creates a temporary buffer for rotated pixels.
+\item Splits the image into segments for parallel processing.
+\item Uses multiple threads to rotate each segment.
+\item Combines results and updates image dimensions. 
+\end{DoxyEnumerate}\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clockwise@{Clockwise}!rotate\_image.cpp@{rotate\_image.cpp}}\index{rotate\_image.cpp@{rotate\_image.cpp}!Clockwise@{Clockwise}}}\mbox{\Hypertarget{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}\label{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}} 
+Clockwise&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CounterClockwise@{CounterClockwise}!rotate\_image.cpp@{rotate\_image.cpp}}\index{rotate\_image.cpp@{rotate\_image.cpp}!CounterClockwise@{CounterClockwise}}}\mbox{\Hypertarget{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}\label{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}} 
+Counter\+Clockwise&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clockwise@{Clockwise}!rotate\_image.cpp@{rotate\_image.cpp}}\index{rotate\_image.cpp@{rotate\_image.cpp}!Clockwise@{Clockwise}}}\mbox{\Hypertarget{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}\label{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797aba360a794737bcc8657a5b6e870d7ba8}} 
+Clockwise&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CounterClockwise@{CounterClockwise}!rotate\_image.cpp@{rotate\_image.cpp}}\index{rotate\_image.cpp@{rotate\_image.cpp}!CounterClockwise@{CounterClockwise}}}\mbox{\Hypertarget{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}\label{rotate__image_8cpp_a6b66060484cf0b607efc54e3f5309797a8f23635f9ec49db2161fc5cddf033a79}} 
+Counter\+Clockwise&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rotate__image_8cpp_a0df5e5ad13f07afe93b6b5ed06f80995}\label{rotate__image_8cpp_a0df5e5ad13f07afe93b6b5ed06f80995}} 
+\index{rotate\_image.cpp@{rotate\_image.cpp}!rotateImage@{rotateImage}}
+\index{rotateImage@{rotateImage}!rotate\_image.cpp@{rotate\_image.cpp}}
+\doxysubsubsection{\texorpdfstring{rotateImage()}{rotateImage()}}
+{\footnotesize\ttfamily void rotate\+Image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBMPImage}{BMPImage}} \&}]{image,  }\item[{\mbox{\hyperlink{im__manipulator_8hpp_a6b66060484cf0b607efc54e3f5309797}{Rotation\+Direction}}}]{direction }\end{DoxyParamCaption})}
+
+
+
+Rotates a BMP image by 90 degrees in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & The \mbox{\hyperlink{classBMPImage}{BMPImage}} to rotate. \\
+\hline
+{\em direction} & The rotation direction (Clockwise or Counter\+Clockwise). \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,273 @@
+\hypertarget{classBMPImage}{}\doxysection{BMPImage Class Reference}
+\label{classBMPImage}\index{BMPImage@{BMPImage}}
+
+
+Class for handling BMP image data and operations.  
+
+
+
+
+{\ttfamily \#include $<$bmp\+\_\+utils.\+hpp$>$}
+
+
+
+Collaboration diagram for BMPImage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classBMPImage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBMPImage_a9fc3f2c48d99df924ede6114961ecfdd}{read}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Reads a BMP image from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBMPImage_a22d6586512487a87bf3e6fb593d343c9}{save}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Saves the BMP image to a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structRGB}{RGB}} \mbox{\hyperlink{classBMPImage_ad1928bd8c4fa1bee32572fea2f3e38c1}{get\+Pixel}} (int x, int y) const
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{structRGB}{RGB}} pixel at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBMPImage_a4634be3e81e921d5731bb01b9d842560}{set\+Pixel}} (int x, int y, const \mbox{\hyperlink{structRGB}{RGB}} \&color)
+\begin{DoxyCompactList}\small\item\em Sets the \mbox{\hyperlink{structRGB}{RGB}} pixel at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBMPImage_a3af2a92bc40415e826e0ff7cb5fcb3ee}{set\+Pixels}} (const std\+::vector$<$ \mbox{\hyperlink{structRGB}{RGB}} $>$ \&new\+Pixels)
+\begin{DoxyCompactList}\small\item\em Sets all pixels in the image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBMPImage_a8e5d3931a48b91cd8b9f9ee0755a5281}{set\+Dimensions}} (int w, int h)
+\begin{DoxyCompactList}\small\item\em Sets the dimensions of the image and resizes the pixel buffer. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structBMPFileHeader}{BMPFile\+Header}} \& \mbox{\hyperlink{classBMPImage_ac4a97c25f1ff02855b1f076be5824b63}{get\+File\+Header}} () const
+\begin{DoxyCompactList}\small\item\em Methods for access to header. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structBMPInfoHeader}{BMPInfo\+Header}} \& \mbox{\hyperlink{classBMPImage_a88e343824d81e520e53f46121b35d4c7}{get\+Info\+Header}} () const
+\item 
+int \mbox{\hyperlink{classBMPImage_a8660f8f4138b1d48561d54b3d1250138}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Methods for access to size. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBMPImage_a0b5240093e8b3084a2492491417686ba}{get\+Height}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBMPImage_a8d46fce615ddeba11f9a6350e174d1cb}{update\+Headers}} ()
+\begin{DoxyCompactList}\small\item\em Updates the BMP file and info headers based on current image dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structBMPFileHeader}{BMPFile\+Header}} \mbox{\hyperlink{classBMPImage_af1ec0ee8c2c2667ca2c53270425f8d6d}{file\+Header}}
+\item 
+\mbox{\hyperlink{structBMPInfoHeader}{BMPInfo\+Header}} \mbox{\hyperlink{classBMPImage_ae45a21931bc598d2059bd14cd3833d52}{info\+Header}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structRGB}{RGB}} $>$ \mbox{\hyperlink{classBMPImage_a1f2c613bcf9ed95deaac66e928b502db}{pixels}}
+\item 
+int \mbox{\hyperlink{classBMPImage_a35875dd635eb414965fd87e169b8fb25}{width}}
+\item 
+int \mbox{\hyperlink{classBMPImage_ad56a6b040478a6012223634dcc19005c}{height}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for handling BMP image data and operations. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBMPImage_ac4a97c25f1ff02855b1f076be5824b63}\label{classBMPImage_ac4a97c25f1ff02855b1f076be5824b63}} 
+\index{BMPImage@{BMPImage}!getFileHeader@{getFileHeader}}
+\index{getFileHeader@{getFileHeader}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{getFileHeader()}{getFileHeader()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structBMPFileHeader}{BMPFile\+Header}}\& BMPImage\+::get\+File\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Methods for access to header. 
+
+\mbox{\Hypertarget{classBMPImage_a0b5240093e8b3084a2492491417686ba}\label{classBMPImage_a0b5240093e8b3084a2492491417686ba}} 
+\index{BMPImage@{BMPImage}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int BMPImage\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classBMPImage_a88e343824d81e520e53f46121b35d4c7}\label{classBMPImage_a88e343824d81e520e53f46121b35d4c7}} 
+\index{BMPImage@{BMPImage}!getInfoHeader@{getInfoHeader}}
+\index{getInfoHeader@{getInfoHeader}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{getInfoHeader()}{getInfoHeader()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structBMPInfoHeader}{BMPInfo\+Header}}\& BMPImage\+::get\+Info\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classBMPImage_ad1928bd8c4fa1bee32572fea2f3e38c1}\label{classBMPImage_ad1928bd8c4fa1bee32572fea2f3e38c1}} 
+\index{BMPImage@{BMPImage}!getPixel@{getPixel}}
+\index{getPixel@{getPixel}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{getPixel()}{getPixel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRGB}{RGB}} BMPImage\+::get\+Pixel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Gets the \mbox{\hyperlink{structRGB}{RGB}} pixel at the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the pixel. \\
+\hline
+{\em y} & The y-\/coordinate of the pixel. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRGB}{RGB}} The pixel value. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if coordinates are out of bounds. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBMPImage_a8660f8f4138b1d48561d54b3d1250138}\label{classBMPImage_a8660f8f4138b1d48561d54b3d1250138}} 
+\index{BMPImage@{BMPImage}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int BMPImage\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Methods for access to size. 
+
+\mbox{\Hypertarget{classBMPImage_a9fc3f2c48d99df924ede6114961ecfdd}\label{classBMPImage_a9fc3f2c48d99df924ede6114961ecfdd}} 
+\index{BMPImage@{BMPImage}!read@{read}}
+\index{read@{read}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily bool BMPImage\+::read (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Reads a BMP image from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the BMP file to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the file was read successfully, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBMPImage_a22d6586512487a87bf3e6fb593d343c9}\label{classBMPImage_a22d6586512487a87bf3e6fb593d343c9}} 
+\index{BMPImage@{BMPImage}!save@{save}}
+\index{save@{save}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void BMPImage\+::save (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Saves the BMP image to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the output BMP file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBMPImage_a8e5d3931a48b91cd8b9f9ee0755a5281}\label{classBMPImage_a8e5d3931a48b91cd8b9f9ee0755a5281}} 
+\index{BMPImage@{BMPImage}!setDimensions@{setDimensions}}
+\index{setDimensions@{setDimensions}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{setDimensions()}{setDimensions()}}
+{\footnotesize\ttfamily void BMPImage\+::set\+Dimensions (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Sets the dimensions of the image and resizes the pixel buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & The new width. \\
+\hline
+{\em h} & The new height. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if width or height are not positive. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBMPImage_a4634be3e81e921d5731bb01b9d842560}\label{classBMPImage_a4634be3e81e921d5731bb01b9d842560}} 
+\index{BMPImage@{BMPImage}!setPixel@{setPixel}}
+\index{setPixel@{setPixel}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{setPixel()}{setPixel()}}
+{\footnotesize\ttfamily void BMPImage\+::set\+Pixel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{const \mbox{\hyperlink{structRGB}{RGB}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Sets the \mbox{\hyperlink{structRGB}{RGB}} pixel at the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the pixel. \\
+\hline
+{\em y} & The y-\/coordinate of the pixel. \\
+\hline
+{\em color} & The new \mbox{\hyperlink{structRGB}{RGB}} pixel value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if coordinates are out of bounds. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBMPImage_a3af2a92bc40415e826e0ff7cb5fcb3ee}\label{classBMPImage_a3af2a92bc40415e826e0ff7cb5fcb3ee}} 
+\index{BMPImage@{BMPImage}!setPixels@{setPixels}}
+\index{setPixels@{setPixels}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{setPixels()}{setPixels()}}
+{\footnotesize\ttfamily void BMPImage\+::set\+Pixels (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structRGB}{RGB}} $>$ \&}]{new\+Pixels }\end{DoxyParamCaption})}
+
+
+
+Sets all pixels in the image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Pixels} & The new pixel data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the new pixel data size doesn\textquotesingle{}t match the current size. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBMPImage_a8d46fce615ddeba11f9a6350e174d1cb}\label{classBMPImage_a8d46fce615ddeba11f9a6350e174d1cb}} 
+\index{BMPImage@{BMPImage}!updateHeaders@{updateHeaders}}
+\index{updateHeaders@{updateHeaders}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{updateHeaders()}{updateHeaders()}}
+{\footnotesize\ttfamily void BMPImage\+::update\+Headers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the BMP file and info headers based on current image dimensions. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBMPImage_af1ec0ee8c2c2667ca2c53270425f8d6d}\label{classBMPImage_af1ec0ee8c2c2667ca2c53270425f8d6d}} 
+\index{BMPImage@{BMPImage}!fileHeader@{fileHeader}}
+\index{fileHeader@{fileHeader}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{fileHeader}{fileHeader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structBMPFileHeader}{BMPFile\+Header}} BMPImage\+::file\+Header\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBMPImage_ad56a6b040478a6012223634dcc19005c}\label{classBMPImage_ad56a6b040478a6012223634dcc19005c}} 
+\index{BMPImage@{BMPImage}!height@{height}}
+\index{height@{height}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int BMPImage\+::height\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBMPImage_ae45a21931bc598d2059bd14cd3833d52}\label{classBMPImage_ae45a21931bc598d2059bd14cd3833d52}} 
+\index{BMPImage@{BMPImage}!infoHeader@{infoHeader}}
+\index{infoHeader@{infoHeader}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{infoHeader}{infoHeader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structBMPInfoHeader}{BMPInfo\+Header}} BMPImage\+::info\+Header\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBMPImage_a1f2c613bcf9ed95deaac66e928b502db}\label{classBMPImage_a1f2c613bcf9ed95deaac66e928b502db}} 
+\index{BMPImage@{BMPImage}!pixels@{pixels}}
+\index{pixels@{pixels}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{pixels}{pixels}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structRGB}{RGB}}$>$ BMPImage\+::pixels\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBMPImage_a35875dd635eb414965fd87e169b8fb25}\label{classBMPImage_a35875dd635eb414965fd87e169b8fb25}} 
+\index{BMPImage@{BMPImage}!width@{width}}
+\index{width@{width}!BMPImage@{BMPImage}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int BMPImage\+::width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{bmp__utils_8hpp}{bmp\+\_\+utils.\+hpp}}\item 
+src/\mbox{\hyperlink{bmp__utils_8cpp}{bmp\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}

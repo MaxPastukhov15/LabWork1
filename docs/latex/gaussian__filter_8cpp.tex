@@ -1,0 +1,63 @@
+\hypertarget{gaussian__filter_8cpp}{}\doxysection{src/gaussian\+\_\+filter.cpp File Reference}
+\label{gaussian__filter_8cpp}\index{src/gaussian\_filter.cpp@{src/gaussian\_filter.cpp}}
+
+
+Implementation of Gaussian blur filter.  
+
+
+{\ttfamily \#include \char`\"{}bmp\+\_\+utils.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+Include dependency graph for gaussian\+\_\+filter.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gaussian__filter_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gaussian__filter_8cpp_a62e466e8452e334e315813efeb3114f5}{apply\+Gaussian\+Filter}} (\mbox{\hyperlink{classBMPImage}{BMPImage}} \&image, int kernel\+Size, float sigma)
+\begin{DoxyCompactList}\small\item\em Applies a Gaussian blur filter to a BMP image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Gaussian blur filter. 
+
+\begin{DoxyAuthor}{Author}
+Maksim Pastukhov (\href{mailto:st131119@student.spbu.ru}{\texttt{ st131119@student.\+spbu.\+ru}}) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gaussian__filter_8cpp_a62e466e8452e334e315813efeb3114f5}\label{gaussian__filter_8cpp_a62e466e8452e334e315813efeb3114f5}} 
+\index{gaussian\_filter.cpp@{gaussian\_filter.cpp}!applyGaussianFilter@{applyGaussianFilter}}
+\index{applyGaussianFilter@{applyGaussianFilter}!gaussian\_filter.cpp@{gaussian\_filter.cpp}}
+\doxysubsubsection{\texorpdfstring{applyGaussianFilter()}{applyGaussianFilter()}}
+{\footnotesize\ttfamily void apply\+Gaussian\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBMPImage}{BMPImage}} \&}]{image,  }\item[{int}]{kernel\+Size,  }\item[{float}]{sigma }\end{DoxyParamCaption})}
+
+
+
+Applies a Gaussian blur filter to a BMP image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & The \mbox{\hyperlink{classBMPImage}{BMPImage}} to filter. \\
+\hline
+{\em kernel\+Size} & The size of the kernel (must be odd). \\
+\hline
+{\em sigma} & The standard deviation for the Gaussian function.\\
+\hline
+\end{DoxyParams}
+The function\+:
+\begin{DoxyEnumerate}
+\item Generates a Gaussian kernel based on the specified size and sigma.
+\item Normalizes the kernel values.
+\item Splits the image into segments for parallel processing.
+\item Uses multiple threads to apply the filter to each segment.
+\item Combines results and updates the image. 
+\end{DoxyEnumerate}

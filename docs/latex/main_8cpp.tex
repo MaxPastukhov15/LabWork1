@@ -1,0 +1,68 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+Main program for BMP image processing.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}bmp\+\_\+utils.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}im\+\_\+manipulator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_aba5bd9067aa6f261123165a337c7957d}{show\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the main menu options. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function for the BMP image processing application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main program for BMP image processing. 
+
+\begin{DoxyAuthor}{Author}
+Maksim Pastukhov (\href{mailto:st131119@student.spbu.ru}{\texttt{ st131119@student.\+spbu.\+ru}})
+\end{DoxyAuthor}
+Provides a command-\/line interface for loading, manipulating, and saving BMP images. Supported operations include rotation and Gaussian blur filtering. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function for the BMP image processing application. 
+
+\begin{DoxyReturn}{Returns}
+int Exit status (0 for success, 1 for error).
+\end{DoxyReturn}
+The function\+:
+\begin{DoxyEnumerate}
+\item Prompts the user for an input BMP filename.
+\item Reads the image file.
+\item Displays a menu for image manipulation options.
+\item Processes user choices until exit is selected. 
+\end{DoxyEnumerate}\mbox{\Hypertarget{main_8cpp_aba5bd9067aa6f261123165a337c7957d}\label{main_8cpp_aba5bd9067aa6f261123165a337c7957d}} 
+\index{main.cpp@{main.cpp}!showMenu@{showMenu}}
+\index{showMenu@{showMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{showMenu()}{showMenu()}}
+{\footnotesize\ttfamily void show\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the main menu options. 
+

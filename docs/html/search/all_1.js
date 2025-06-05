@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['b_1',['b',['../structRGB.html#abe4c6992a197eff41d9b4dedfb251c87',1,'RGB']]],
+  ['bfoffbits_2',['bfOffBits',['../structBMPFileHeader.html#adb045f758afe73a835ad7cfed40ae31d',1,'BMPFileHeader']]],
+  ['bfreserved1_3',['bfReserved1',['../structBMPFileHeader.html#aa4bcd014e35633ea836723d9b9e521ec',1,'BMPFileHeader']]],
+  ['bfreserved2_4',['bfReserved2',['../structBMPFileHeader.html#a329db915a85b1490f3c144c978465486',1,'BMPFileHeader']]],
+  ['bfsize_5',['bfSize',['../structBMPFileHeader.html#a1b8126a94046ec3d4a1e5f569ae9c27d',1,'BMPFileHeader']]],
+  ['bftype_6',['bfType',['../structBMPFileHeader.html#a48896537fc567afd4e7d3090579f24a9',1,'BMPFileHeader']]],
+  ['bibitcount_7',['biBitCount',['../structBMPInfoHeader.html#a05f63cc34622f99233bc27dce9003f73',1,'BMPInfoHeader']]],
+  ['biclrimportant_8',['biClrImportant',['../structBMPInfoHeader.html#ac7abdb77f5ffe710dfab39633e976375',1,'BMPInfoHeader']]],
+  ['biclrused_9',['biClrUsed',['../structBMPInfoHeader.html#abef2a46f0916de37cc57162c07045854',1,'BMPInfoHeader']]],
+  ['bicompression_10',['biCompression',['../structBMPInfoHeader.html#a084ab95f2f31361ff2ce6f4ceb348b37',1,'BMPInfoHeader']]],
+  ['biheight_11',['biHeight',['../structBMPInfoHeader.html#ad8ed894159a796ff770848f621b94557',1,'BMPInfoHeader']]],
+  ['biplanes_12',['biPlanes',['../structBMPInfoHeader.html#a2ec1038058d2524844771da9d02e8c2e',1,'BMPInfoHeader']]],
+  ['bisize_13',['biSize',['../structBMPInfoHeader.html#ad26b32800df69db0794941a066feb734',1,'BMPInfoHeader']]],
+  ['bisizeimage_14',['biSizeImage',['../structBMPInfoHeader.html#a28f244e0afb677980618d782e79990e1',1,'BMPInfoHeader']]],
+  ['biwidth_15',['biWidth',['../structBMPInfoHeader.html#a0a5461bef21c567935e86e3eede549be',1,'BMPInfoHeader']]],
+  ['bixpelspermeter_16',['biXPelsPerMeter',['../structBMPInfoHeader.html#a4e215791ff78ae2c82639f8dde27cdfa',1,'BMPInfoHeader']]],
+  ['biypelspermeter_17',['biYPelsPerMeter',['../structBMPInfoHeader.html#a70cd9add8714091fbcc01cd2f06de332',1,'BMPInfoHeader']]],
+  ['bmp_5futils_2ecpp_18',['bmp_utils.cpp',['../bmp__utils_8cpp.html',1,'']]],
+  ['bmp_5futils_2ehpp_19',['bmp_utils.hpp',['../bmp__utils_8hpp.html',1,'']]],
+  ['bmpfileheader_20',['BMPFileHeader',['../structBMPFileHeader.html',1,'']]],
+  ['bmpimage_21',['BMPImage',['../classBMPImage.html',1,'']]],
+  ['bmpinfoheader_22',['BMPInfoHeader',['../structBMPInfoHeader.html',1,'']]]
+];

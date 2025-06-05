@@ -1,0 +1,8 @@
+<map id="include/bmp_utils.hpp" name="include/bmp_utils.hpp">
+<area shape="rect" id="node1" title="BMP structures and class definitions." alt="" coords="268,5,433,32"/>
+<area shape="rect" id="node2" href="$im__manipulator_8hpp.html" title="Image manipulation functions declarations." alt="" coords="5,80,208,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="Main program for BMP image processing." alt="" coords="123,155,229,181"/>
+<area shape="rect" id="node4" href="$bmp__utils_8cpp.html" title="Implementation of BMPImage class methods." alt="" coords="283,80,419,107"/>
+<area shape="rect" id="node5" href="$gaussian__filter_8cpp.html" title="Implementation of Gaussian blur filter." alt="" coords="443,80,610,107"/>
+<area shape="rect" id="node6" href="$rotate__image_8cpp.html" title="Implementation of image rotation functions." alt="" coords="634,80,793,107"/>
+</map>
